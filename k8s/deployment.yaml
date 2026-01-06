@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: <ECR_REPOSITORY_URL>:latest  # This will be replaced by CI/CD pipeline
+        image: <ECR_REPOSITORY_URL>  # This will be replaced by CI/CD pipeline
         ports:
         - containerPort: 3000
           protocol: TCP
