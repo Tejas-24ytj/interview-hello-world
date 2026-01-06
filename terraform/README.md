@@ -2,7 +2,7 @@
 
 This directory contains the Terraform configuration for provisioning AWS infrastructure including VPC, EKS, ECR, and IAM resources.
 
-## 📁 Directory Structure
+## Directory Structure
 
 ```
 terraform/
@@ -32,7 +32,7 @@ terraform/
 └── README.md                  # This file
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 The infrastructure consists of:
 
@@ -59,7 +59,7 @@ The infrastructure consists of:
 - EKS OIDC provider for service accounts
 - IAM role for GitHub Actions with minimal permissions
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -94,8 +94,6 @@ terraform apply
 # Type 'yes' when prompted
 ```
 
-⏱️ This takes approximately 15-20 minutes.
-
 ### Step 5: Save Outputs
 
 ```bash
@@ -106,7 +104,7 @@ terraform output
 terraform output -raw github_actions_role_arn
 ```
 
-## 📝 Configuration
+## Configuration
 
 ### Required Variables
 
@@ -155,7 +153,7 @@ Then re-apply:
 terraform apply
 ```
 
-## 📤 Outputs
+## Outputs
 
 Key outputs you'll need:
 
@@ -166,7 +164,7 @@ Key outputs you'll need:
 | `ecr_repository_url` | ECR repository URL | Where Docker images are pushed |
 | `configure_kubectl` | kubectl config command | Run to access your cluster |
 
-## 🧰 Useful Commands
+## Useful Commands
 
 ### View Infrastructure State
 
@@ -199,7 +197,7 @@ kubectl delete -f ../k8s/
 terraform destroy
 ```
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue: Terraform init fails
 
@@ -224,7 +222,7 @@ cd terraform
 terraform init
 ```
 
-## 🏷️ Resource Naming Convention
+## Resource Naming Convention
 
 Resources are named using the pattern: `{project_name}-{environment}-{resource_type}`
 
@@ -233,29 +231,7 @@ Examples:
 - EKS: `hello-world-dev`
 - ECR: `hello-world-dev`
 
-## 💰 Cost Estimation
-
-Monthly costs (us-east-1):
-
-| Resource | Cost | Notes |
-|---------|------|-------|
-| EKS Control Plane | $73 | Fixed |
-| EC2 (2x t3.medium) | ~$60 | On-Demand |
-| NAT Gateway | ~$32 | + data transfer |
-| LoadBalancer | ~$18 | + data transfer |
-| EBS (40GB) | ~$4 | gp3 |
-| **Total** | **~$190/month** | |
-
-### Cost Optimization
-
-1. Use `capacity_type = "SPOT"` for 70% savings on EC2
-2. Scale to 1 node during development
-3. Use `t3.small` instead of `t3.medium`
-4. Delete resources when not in use: `terraform destroy`
-
-## 🔒 Security Best Practices
-
-✅ **Implemented:**
+ **Implemented:**
 - VPC with private subnets for EKS nodes
 - Security groups with minimal required access
 - IAM roles with least privilege principle
@@ -263,7 +239,7 @@ Monthly costs (us-east-1):
 - Encrypted ECR repository
 - Image vulnerability scanning
 
-## 📚 Module Documentation
+## Module Documentation
 
 ### Networking Module
 
@@ -296,44 +272,8 @@ Creates IAM resources for:
 - EKS service account integration
 - Minimal required permissions
 
-## 🔄 State Management
+## State Management
 
 ### Local State (Default)
 
 State is stored locally in `terraform.tfstate` file.
-
-**⚠️ Warning**: Do not commit `terraform.tfstate` to Git!
-
-### Remote State (Recommended for Production)
-
-For production, configure remote state:
-
-```hcl
-terraform {
-  backend "s3" {
-    bucket = "my-terraform-state"
-    key    = "hello-world/terraform.tfstate"
-    region = "us-east-1"
-  }
-}
-```
-
-## 📖 Further Reading
-
-- [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
-- [terraform-aws-modules/vpc](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
-- [terraform-aws-modules/eks](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest)
-- [AWS EKS Best Practices](https://aws.github.io/aws-eks-best-practices/)
-
-## 🤝 Contributing
-
-When modifying modules:
-1. Test changes in a separate branch
-2. Run `terraform fmt` to format code
-3. Run `terraform validate` to check syntax
-4. Document any new variables or outputs
-
----
-
-**Need help?** Check the main [README.md](../README.md) or open an issue.
-
