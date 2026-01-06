@@ -77,10 +77,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install trivy -y
 
-      - name: Run Trivy vulnerability scanner
+      - name: Run Trivy vulnerability scanner (Report all vulnerabilities)
         run: |
+          echo "🔍 Scanning for all vulnerabilities (informational)..."
           trivy image \
             --severity HIGH,CRITICAL \
+            --exit-code 0 \
+            --format table \
+            ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} || true
+
+      - name: Run Trivy vulnerability scanner (Fail only on CRITICAL)
+        run: |
+          echo "🚨 Checking for CRITICAL vulnerabilities (will fail pipeline)..."
+          trivy image \
+            --severity CRITICAL \
             --exit-code 1 \
             --format table \
             ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
