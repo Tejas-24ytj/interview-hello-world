@@ -2,7 +2,7 @@
 
 A production-ready Node.js Express application deployed on AWS EKS with automated CI/CD pipelines using GitHub Actions, Infrastructure as Code using Terraform, and security scanning with Trivy.
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 This project demonstrates a complete DevOps workflow:
 
@@ -12,7 +12,7 @@ This project demonstrates a complete DevOps workflow:
 - **Security**: Trivy vulnerability scanning, non-root containers, OIDC-based authentication
 - **Kubernetes**: LoadBalancer service, health checks, resource limits, rolling updates
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -24,7 +24,7 @@ Before you begin, ensure you have the following installed:
 - AWS Account with appropriate permissions
 - GitHub Account
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the Repository
 
@@ -76,8 +76,6 @@ terraform plan
 terraform apply
 # Type 'yes' when prompted
 ```
-
-⏱️ **Note**: This process takes approximately 15-20 minutes to provision the EKS cluster and all networking components.
 
 #### Step 5: Save Important Outputs
 
@@ -208,7 +206,7 @@ curl http://${LOAD_BALANCER_URL}
 curl http://${LOAD_BALANCER_URL}/health
 ```
 
-## 📊 Pipeline Details
+## Pipeline Details
 
 ### CI Pipeline (Continuous Integration)
 
@@ -246,7 +244,7 @@ Triggers on: Successful completion of CI Pipeline
    - Waits for rollout completion
    - Displays LoadBalancer URL
 
-## 🏗️ Infrastructure Components
+## Infrastructure Components
 
 ### AWS Resources Created by Terraform
 
@@ -285,7 +283,7 @@ Triggers on: Successful completion of CI Pipeline
    - External access on port 80
    - Routes to container port 3000
 
-## 🔒 Security Features
+## Security Features
 
 ### Infrastructure Security
 
@@ -311,7 +309,7 @@ Triggers on: Successful completion of CI Pipeline
 - ✅ No sensitive data in logs
 - ✅ Resource limits to prevent DoS
 
-## 🧪 Local Development
+## Local Development
 
 ### Run Locally
 
@@ -344,8 +342,6 @@ curl http://localhost:3000
 
 ```bash
 # Install Trivy
-# On macOS
-brew install trivy
 
 # On Linux
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
@@ -367,7 +363,7 @@ npm install
 npx eslint .
 ```
 
-## 📸 Screenshots
+## Screenshots
 
 ### Successful Pipeline Run
 
@@ -378,7 +374,7 @@ npx eslint .
 
 ![Application Response](screenshots/app-response.png)
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Pipeline Fails at Security Scan
 
@@ -439,9 +435,7 @@ terraform apply
 3. Ensure OIDC provider is created: `terraform apply`
 4. Check IAM role permissions in AWS console
 
-## 🧹 Cleanup
-
-To avoid AWS charges, destroy all resources:
+## Cleanup
 
 ```bash
 # Delete Kubernetes resources first
@@ -458,7 +452,7 @@ terraform destroy
 # Type 'yes' when prompted
 ```
 
-## 📚 Project Structure
+## Project Structure
 
 ```
 interview-hello-world/
@@ -490,7 +484,7 @@ interview-hello-world/
 └── README.md                    # This file
 ```
 
-## 🎯 Key Features Implemented
+## Key Features Implemented
 
 ### Task 1: Infrastructure (Terraform) ✅
 
@@ -518,52 +512,9 @@ interview-hello-world/
 - ✅ Deploys with new image tag
 - ✅ LoadBalancer for public access
 
-## 📝 Notes
-
-- **Cost Optimization**: NAT Gateway costs ~$32/month. For dev environments, consider using a single NAT Gateway (already configured) or NAT instances.
-- **EKS Cluster**: Takes ~15 minutes to provision
-- **LoadBalancer**: AWS ELB costs ~$18/month + data transfer
-- **Node Groups**: t3.medium instances are ~$30/month each
-- **Total Estimated Cost**: ~$100-120/month for this setup
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👤 Author
-
-**Your Name**
-
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
-
-## 🙏 Acknowledgments
-
-- Original repository: [vishwajeetk1160/interview-hello-world](https://github.com/vishwajeetk1160/interview-hello-world)
-- Terraform AWS Modules: [terraform-aws-modules](https://github.com/terraform-aws-modules)
-- Trivy Security Scanner: [Aqua Security](https://github.com/aquasecurity/trivy)
-
----
-
-## 📍 Live Demo
-
-**Application URL**: `http://YOUR_LOAD_BALANCER_URL`
-
-**Note**: Replace with your actual LoadBalancer URL after deployment.
-
 To get your LoadBalancer URL:
 ```bash
 kubectl get svc hello-world -n default -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
-
----
 
 **Built with ❤️ using Terraform, AWS EKS, and GitHub Actions**
