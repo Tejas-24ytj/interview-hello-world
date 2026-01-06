@@ -1,0 +1,9 @@
+node_modules/
+terraform/
+k8s/
+.github/
+*.md
+Dockerfile
+
+
+
