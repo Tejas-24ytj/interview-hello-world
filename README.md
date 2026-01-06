@@ -516,5 +516,3 @@ To get your LoadBalancer URL:
 ```bash
 kubectl get svc hello-world -n default -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
-
-**Built with ❤️ using Terraform, AWS EKS, and GitHub Actions**
