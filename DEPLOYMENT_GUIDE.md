@@ -52,14 +52,11 @@ cluster_version = "1.33"
 # Update with YOUR GitHub username
 github_repository_pattern = "repo:YOUR_USERNAME/interview-hello-world:*"
 
-node_instance_types = ["t3.medium"]
-node_desired_size = 2
-node_min_size = 1
-node_max_size = 3
-
-tags = {
-  Owner = "YourName"
-}
+# Node group configuration
+instance_types = ["t3.medium"]
+desired_size = 2
+min_size = 1
+max_size = 3
 ```
 
 **Important:** Replace `YOUR_USERNAME` and `YourName`!

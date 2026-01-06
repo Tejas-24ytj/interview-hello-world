@@ -15,7 +15,7 @@ output "github_oidc_provider_arn" {
 
 output "eks_oidc_provider_arn" {
   description = "ARN of EKS OIDC provider"
-  value       = aws_iam_openid_connect_provider.eks.arn
+  value       = data.aws_iam_openid_connect_provider.eks.arn
 }
 
 output "aws_account_id" {
