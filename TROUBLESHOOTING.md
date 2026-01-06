@@ -1,4 +1,4 @@
-# 🔧 Troubleshooting Guide
+# Troubleshooting Guide
 
 This document contains all the issues encountered during the EKS deployment and their solutions.
 
