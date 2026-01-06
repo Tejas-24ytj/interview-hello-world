@@ -1,22 +1,10 @@
 # Data source for current AWS account
 data "aws_caller_identity" "current" {}
 
-# OIDC Provider for EKS
-data "tls_certificate" "eks" {
+# Reference the OIDC Provider created by EKS module (don't create a duplicate)
+# The EKS module already creates this, so we just reference it
+data "aws_iam_openid_connect_provider" "eks" {
   url = var.eks_oidc_issuer_url
-}
-
-resource "aws_iam_openid_connect_provider" "eks" {
-  client_id_list  = ["sts.amazonaws.com"]
-  thumbprint_list = [data.tls_certificate.eks.certificates[0].sha1_fingerprint]
-  url             = var.eks_oidc_issuer_url
-
-  tags = merge(
-    var.tags,
-    {
-      Name = "${var.project_name}-eks-oidc"
-    }
-  )
 }
 
 # GitHub OIDC Provider
