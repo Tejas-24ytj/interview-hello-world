@@ -516,3 +516,17 @@ To get your LoadBalancer URL:
 ```bash
 kubectl get svc hello-world -n default -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
+
+## Screenshots 
+
+<img width="1909" height="981" alt="Image" src="https://github.com/user-attachments/assets/4540497a-c2b3-4d08-b56a-eeae0a61350b" />
+
+<img width="1909" height="981" alt="Image" src="https://github.com/user-attachments/assets/2bc4d36d-a984-42ce-8ff9-0951601090ad" />
+
+<img width="1909" height="981" alt="Image" src="https://github.com/user-attachments/assets/1da214a2-90c5-4fbd-8585-1d8523760317" />
+
+<img width="1909" height="981" alt="Image" src="https://github.com/user-attachments/assets/a3755f25-1ed8-4763-ae52-2af32a011ea9" />
+
+<img width="1917" height="904" alt="Image" src="https://github.com/user-attachments/assets/1aeb791c-676a-4d93-ad0d-f55db7a31219" />
+
+<img width="1910" height="1000" alt="Image" src="https://github.com/user-attachments/assets/4d51bd1a-43b3-4fad-a1e2-96abf8d43f55" />
